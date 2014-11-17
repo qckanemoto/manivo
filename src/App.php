@@ -11,7 +11,7 @@ final class App extends AbstractApp
     /**
      * @PostConstruct()
      */
-    public function initParse()
+    public function onInit()
     {
         $appId = 'JgytQlORxrBx6B7uNd757Z9JlIhZCCQJvoBN8fG1';
         $restKey = 'dChlqyK9E0K6LlYrPBVSkz7vtSr1FI8pDJHumEKa';
