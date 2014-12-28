@@ -8,6 +8,10 @@ use Parse\ParseUser;
 
 class Users extends ResourceObject
 {
+    /**
+     * @param null $objectId
+     * @return $this
+     */
     public function onGet($objectId = null)
     {
         $query = ParseUser::query();
@@ -26,25 +30,27 @@ class Users extends ResourceObject
             }
         }
 
-        $users = [];
-        foreach ($query->find() as $user) {
-            $users[] = json_decode($user->_encode(), true);
-        }
-        $this->body = $users;
+        $this['users'] = $query->find();
 
         return $this;
     }
 
-    public function onPost($username, $email, $password)
+    /**
+     * @param $username
+     * @param $password
+     * @param null $email
+     * @return $this
+     */
+    public function onPost($username, $password, $email = null)
     {
         $user = new ParseUser();
         $user->set('username', $username);
-        $user->set('email', $email);
         $user->set('password', $password);
+        is_null($email) or $user->set('email', $email);
 
         try {
             $user->signUp();
-            $this->body = json_decode($user->_encode(), true);
+            $this['user'] = $user;
 
         } catch (ParseException $e) {
             $this['error'] = [

@@ -8,11 +8,16 @@ use Parse\ParseUser;
 
 class Login extends ResourceObject
 {
+    /**
+     * @param $username
+     * @param $password
+     * @return $this
+     */
     public function onGet($username, $password)
     {
         try {
             $user = ParseUser::logIn($username, $password);
-            $this->body = json_decode($user->_encode(), true);
+            $this['user'] = $user;
 
         } catch (ParseException $e) {
             $this['error'] = [

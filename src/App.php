@@ -9,7 +9,7 @@ use Ray\Di\Di\PostConstruct;
 final class App extends AbstractApp
 {
     /**
-     * @PostConstruct()
+     * @PostConstruct
      */
     public function onInit()
     {
