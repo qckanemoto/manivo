@@ -42,4 +42,32 @@ class Incomes extends ResourceObject
 
         return $this;
     }
+
+    public function onPost($username, $password, $date, $amount)
+    {
+        /** @var ParseUser $user */
+        $user = $this->resource
+            ->get
+            ->uri('app://self/login')
+            ->withQuery(['username' => $username, 'password' => $password])
+            ->eager
+            ->request()
+            ->body['user']
+        ;
+
+        $income = $this->resource
+            ->post
+            ->uri('app://self/incomes')
+            ->withQuery(['sessionToken' => $user->getSessionToken(), 'date' => $date, 'amount' => $amount])
+            ->eager
+            ->request()
+            ->body['income']
+        ;
+
+        $this['income'] = json_decode($income->_encode(), true);
+
+        $this->setRenderer(new JsonRenderer($this));
+
+        return $this;
+    }
 }
