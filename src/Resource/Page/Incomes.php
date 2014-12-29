@@ -4,28 +4,22 @@ namespace Qck\Manivo\Resource\Page;
 use BEAR\Package\Provide\ResourceView\JsonRenderer;
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Inject\ResourceInject;
-use Parse\ParseUser;
 
 class Incomes extends ResourceObject
 {
     use ResourceInject;
 
-    public function onGet($username, $password, $objectId = null)
+    /**
+     * @param $sessionToken
+     * @param null $objectId
+     * @return $this
+     */
+    public function onGet($sessionToken, $objectId = null)
     {
-        /** @var ParseUser $user */
-        $user = $this->resource
-            ->get
-            ->uri('app://self/login')
-            ->withQuery(['username' => $username, 'password' => $password])
-            ->eager
-            ->request()
-            ->body['user']
-        ;
-
         $incomes = $this->resource
             ->get
             ->uri('app://self/incomes')
-            ->withQuery(['sessionToken' => $user->getSessionToken(), 'objectId' => $objectId])
+            ->withQuery(['sessionToken' => $sessionToken, 'objectId' => $objectId])
             ->eager
             ->request()
             ->body['incomes']
@@ -43,22 +37,18 @@ class Incomes extends ResourceObject
         return $this;
     }
 
-    public function onPost($username, $password, $date, $amount)
+    /**
+     * @param $sessionToken
+     * @param $date
+     * @param $amount
+     * @return $this
+     */
+    public function onPost($sessionToken, $date, $amount)
     {
-        /** @var ParseUser $user */
-        $user = $this->resource
-            ->get
-            ->uri('app://self/login')
-            ->withQuery(['username' => $username, 'password' => $password])
-            ->eager
-            ->request()
-            ->body['user']
-        ;
-
         $income = $this->resource
             ->post
             ->uri('app://self/incomes')
-            ->withQuery(['sessionToken' => $user->getSessionToken(), 'date' => $date, 'amount' => $amount])
+            ->withQuery(['sessionToken' => $sessionToken, 'date' => $date, 'amount' => $amount])
             ->eager
             ->request()
             ->body['income']
