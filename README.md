@@ -1,5 +1,7 @@
 # manivo
 
+Now under developing.
+
 ## Requirements
 
 * PHP 5.4+
