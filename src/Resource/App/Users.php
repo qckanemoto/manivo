@@ -1,33 +1,24 @@
 <?php
 namespace Qck\Manivo\Resource\App;
 
-use BEAR\Resource\Code;
 use BEAR\Resource\ResourceObject;
-use Parse\ParseException;
 use Parse\ParseUser;
+use Qck\Manivo\Annotation\ParseExceptionThrowable;
 
 class Users extends ResourceObject
 {
     /**
      * @param null $objectId
      * @return $this
+     *
+     * @ParseExceptionThrowable
      */
     public function onGet($objectId = null)
     {
         $query = ParseUser::query();
 
         if (!is_null($objectId)) {
-            try {
-                $query->get($objectId);
-            } catch (ParseException $e) {
-                $this['error'] = [
-                    'code' => $e->getCode(),
-                    'message' => $e->getMessage(),
-                ];
-                $this->code = Code::NOT_FOUND;
-
-                return $this;
-            }
+            $query->get($objectId);
         }
 
         $this['users'] = $query->find();
@@ -40,6 +31,8 @@ class Users extends ResourceObject
      * @param $password
      * @param null $email
      * @return $this
+     *
+     * @ParseExceptionThrowable
      */
     public function onPost($username, $password, $email = null)
     {
@@ -48,17 +41,8 @@ class Users extends ResourceObject
         $user->set('password', $password);
         is_null($email) or $user->set('email', $email);
 
-        try {
-            $user->signUp();
-            $this['user'] = $user;
-
-        } catch (ParseException $e) {
-            $this['error'] = [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage(),
-            ];
-            $this->code = Code::BAD_REQUEST;
-        }
+        $user->signUp();
+        $this['user'] = $user;
 
         return $this;
     }
