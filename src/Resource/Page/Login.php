@@ -26,16 +26,24 @@ class Login extends ResourceObject
      */
     public function onGet($username, $password)
     {
-        /** @var ParseUser $user */
-        $user = $this->resource
+        /** @var ResourceObject $ro */
+        $ro = $this->resource
             ->get
             ->uri('app://self/login')
             ->withQuery(['username' => $username, 'password' => $password])
             ->eager
             ->request()
-            ->body['user']
         ;
 
+        if (isset($ro->body['error'])) {
+            $this->code = $ro->code;
+            $this->body = $ro->body;
+
+            return $this;
+        }
+
+        /** @var ParseUser $user */
+        $user = $ro->body['user'];
         $this['sessionToken'] = $user->getSessionToken();
 
         return $this;
