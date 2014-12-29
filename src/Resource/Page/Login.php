@@ -37,6 +37,7 @@ class Login extends ResourceObject
 
         if (isset($ro->body['error'])) {
             $this->code = $ro->code;
+            $this->headers = $ro->headers;
             $this->body = $ro->body;
 
             return $this;
