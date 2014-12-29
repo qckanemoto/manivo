@@ -16,6 +16,8 @@
  *  'resource_dir' => "{$appDir}/src/Resource"
  */
 
+require __DIR__ . '/parse.php';
+
 $masterDb = $slaveDb = require __DIR__  .'/db/sqlite.php';
 //list($masterDb, $slaveDb) = require __DIR__  .'/db/mysql.php';
 

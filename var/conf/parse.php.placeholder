@@ -1,0 +1,5 @@
+<?php
+// set Parse.com Application Keys.
+define('PARSE_APP_ID', 'Application ID here');
+define('PARSE_REST_KEY', 'REST API Key here');
+define('PARSE_MASTER_KEY', 'Master Key here');
