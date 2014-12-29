@@ -33,12 +33,6 @@ class AppModule extends AbstractModule
     {
         $this->install(new StandardPackageModule('Qck\Manivo', $this->context, dirname(dirname(__DIR__))));
 
-        $this->bindInterceptor(
-            $this->matcher->any(),
-            $this->matcher->annotatedWith('Qck\Manivo\Annotation\ParseExceptionThrowable'),
-            [$this->requestInjection('Qck\Manivo\Interceptor\ParseExceptionCatcher')]
-        );
-
         // override module
         // $this->install(new SmartyModule($this));
 
@@ -48,6 +42,6 @@ class AppModule extends AbstractModule
         // $this->install(new App\Dependency);
 
         // install application aspect
-        // $this->install(new App\Aspect($this));
+        $this->install(new App\Aspect($this));
     }
 }
