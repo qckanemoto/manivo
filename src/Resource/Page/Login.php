@@ -5,10 +5,19 @@ use BEAR\Package\Provide\ResourceView\JsonRenderer;
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Inject\ResourceInject;
 use Parse\ParseUser;
+use Ray\Di\Di\PostConstruct;
 
 class Login extends ResourceObject
 {
     use ResourceInject;
+
+    /**
+     * @PostConstruct
+     */
+    public function onInit()
+    {
+        $this->setRenderer(new JsonRenderer);
+    }
 
     /**
      * @param $username
@@ -28,8 +37,6 @@ class Login extends ResourceObject
         ;
 
         $this['sessionToken'] = $user->getSessionToken();
-
-        $this->setRenderer(new JsonRenderer($this));
 
         return $this;
     }

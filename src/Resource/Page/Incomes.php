@@ -4,10 +4,19 @@ namespace Qck\Manivo\Resource\Page;
 use BEAR\Package\Provide\ResourceView\JsonRenderer;
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Inject\ResourceInject;
+use Ray\Di\Di\PostConstruct;
 
 class Incomes extends ResourceObject
 {
     use ResourceInject;
+
+    /**
+     * @PostConstruct
+     */
+    public function onInit()
+    {
+        $this->setRenderer(new JsonRenderer);
+    }
 
     /**
      * @param $sessionToken
@@ -32,8 +41,6 @@ class Incomes extends ResourceObject
 
         $this['incomes'] = $incomes;
 
-        $this->setRenderer(new JsonRenderer($this));
-
         return $this;
     }
 
@@ -55,8 +62,6 @@ class Incomes extends ResourceObject
         ;
 
         $this['income'] = json_decode($income->_encode(), true);
-
-        $this->setRenderer(new JsonRenderer($this));
 
         return $this;
     }
