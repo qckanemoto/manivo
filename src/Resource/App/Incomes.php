@@ -1,13 +1,12 @@
 <?php
 namespace Qck\Manivo\Resource\App;
 
-use BEAR\Resource\Code;
 use BEAR\Resource\ResourceObject;
 use Parse\ParseACL;
-use Parse\ParseException;
 use Parse\ParseObject;
 use Parse\ParseQuery;
 use Parse\ParseUser;
+use Qck\Manivo\Annotation\ParseExceptionThrowable;
 
 class Incomes extends ResourceObject
 {
@@ -15,23 +14,15 @@ class Incomes extends ResourceObject
      * @param $sessionToken
      * @param null $objectId
      * @return $this
+     *
+     * @ParseExceptionThrowable
      */
     public function onGet($sessionToken, $objectId = null)
     {
         $query = new ParseQuery('Income');
 
         if (!is_null($objectId)) {
-            try {
-                $query->get($objectId);
-            } catch (ParseException $e) {
-                $this['error'] = [
-                    'code' => $e->getCode(),
-                    'message' => $e->getMessage(),
-                ];
-                $this->code = Code::NOT_FOUND;
-
-                return $this;
-            }
+            $query->get($objectId);
         }
 
         ParseUser::become($sessionToken);
@@ -45,6 +36,8 @@ class Incomes extends ResourceObject
      * @param $date
      * @param $amount
      * @return $this
+     *
+     * @ParseExceptionThrowable
      */
     public function onPost($sessionToken, $date, $amount)
     {
@@ -56,17 +49,8 @@ class Incomes extends ResourceObject
         $income->set('user', $user);
         $income->setACL(ParseACL::createACLWithUser($user));
 
-        try {
-            $income->save();
-            $this['income'] = $income;
-
-        } catch (ParseException $e) {
-            $this['error'] = [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage(),
-            ];
-            $this->code = Code::BAD_REQUEST;
-        }
+        $income->save();
+        $this['income'] = $income;
 
         return $this;
     }
