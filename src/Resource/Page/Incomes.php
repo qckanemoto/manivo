@@ -4,6 +4,7 @@ namespace Qck\Manivo\Resource\Page;
 use BEAR\Package\Provide\ResourceView\JsonRenderer;
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Inject\ResourceInject;
+use Parse\ParseObject;
 use Ray\Di\Di\PostConstruct;
 
 class Incomes extends ResourceObject
@@ -25,20 +26,27 @@ class Incomes extends ResourceObject
      */
     public function onGet($sessionToken, $objectId = null)
     {
-        $incomes = $this->resource
+        /** @var ResourceObject $ro */
+        $ro = $this->resource
             ->get
             ->uri('app://self/incomes')
             ->withQuery(['sessionToken' => $sessionToken, 'objectId' => $objectId])
             ->eager
             ->request()
-            ->body['incomes']
         ;
 
-        foreach ($incomes as &$income) {
-            $income = json_decode($income->_encode(), true);
-        }
-        unset($income);
+        if (isset($ro->body['error'])) {
+            $this->code = $ro->code;
+            $this->body = $ro->body;
 
+            return $this;
+        }
+
+        $incomes = [];
+        foreach ($ro->body['incomes'] as $income) {
+            /** @var ParseObject $income */
+            $incomes[] = json_decode($income->_encode(), true);
+        }
         $this['incomes'] = $incomes;
 
         return $this;
@@ -52,15 +60,24 @@ class Incomes extends ResourceObject
      */
     public function onPost($sessionToken, $date, $amount)
     {
-        $income = $this->resource
+        /** @var ResourceObject $ro */
+        $ro = $this->resource
             ->post
             ->uri('app://self/incomes')
             ->withQuery(['sessionToken' => $sessionToken, 'date' => $date, 'amount' => $amount])
             ->eager
             ->request()
-            ->body['income']
         ;
 
+        if (isset($ro->body['error'])) {
+            $this->code = $ro->code;
+            $this->body = $ro->body;
+
+            return $this;
+        }
+
+        /** @var ParseObject $income */
+        $income = $ro->body['income'];
         $this['income'] = json_decode($income->_encode(), true);
 
         return $this;
