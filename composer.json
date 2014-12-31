@@ -3,11 +3,12 @@
     "description":"n/a",
     "license": "proprietary",
     "require": {
-        "bear/package": "~0.11",
+        "php": ">=5.5.0",
+        "ext-apcu": "*",
+        "bear/package": "~1.0@dev",
         "parse/php-sdk": "1.0.*"
     },
     "require-dev": {
-        "bear/dev-package": "~0.1@dev"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

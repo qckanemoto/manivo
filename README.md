@@ -23,5 +23,5 @@ $ vi var/conf/parse.php  # tailor to your Parse.com app.
 ## Usage
 
 ```bash
-$ php bootstrap/context/api.php get "app://self/users"
+$ php bootstrap/api.php get "app://self/users"
 ```
