@@ -6,13 +6,15 @@ Now under developing.
 
 ## Requirements
 
-* PHP 5.4+
+* PHP 5.5+
 
 ## Getting started
 
+Push `Deploy to Heroku` button, or:
+
 ```bash
-$ git clone git@github.com:qckanemoto/manivo-api.git
-$ cd manivo-api
+$ git clone git@github.com:qckanemoto/manivo.git
+$ cd manivo
 $ composer install
 $ cp var/conf/parse.php.placeholder var/conf/parse.php
 $ vi var/conf/parse.php  # tailor to your Parse.com app.
