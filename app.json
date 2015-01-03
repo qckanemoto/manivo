@@ -1,3 +1,8 @@
 {
-    "name": "manivo"
+    "name": "manivo",
+    "env": {
+        "PARSE_APP_ID": "Application ID here",
+        "PARSE_REST_KEY": "REST API Key here",
+        "PARSE_MASTER_KEY": "Master Key here"
+    }
 }
