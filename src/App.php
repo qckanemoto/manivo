@@ -13,6 +13,10 @@ final class App extends AbstractApp
      */
     public function onInit()
     {
-        ParseClient::initialize(PARSE_APP_ID, PARSE_REST_KEY, PARSE_MASTER_KEY);
+        $appId = $_ENV['PARSE_APP_ID'];
+        $restKey = $_ENV['PARSE_REST_KEY'];
+        $masterKey = $_ENV['PARSE_MASTER_KEY'];
+
+        ParseClient::initialize($appId, $restKey, $masterKey);
     }
 }

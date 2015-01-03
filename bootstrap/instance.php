@@ -12,6 +12,8 @@ use BEAR\Package\Bootstrap\Bootstrap;
 
 require_once __DIR__ . '/autoload.php';
 
+$_SERVER;
+
 $app = Bootstrap::getApp(
     __NAMESPACE__,
     isset($context) ? $context : 'prod',
