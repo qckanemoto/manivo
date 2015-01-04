@@ -1,8 +1,6 @@
 <?php
-namespace Qck\Manivo\Resource\Page;
 
-use Ray\Di\Injector;
-use Qck\Manivo\Module\TestModule;
+namespace Qck\Manivo\Resource\Page;
 
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,56 +15,24 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $this->resource = clone $GLOBALS['RESOURCE'];
     }
 
-    /**
-     * page resource
-     *
-     * @test
-     */
-    public function resource()
+    public function testOnGet()
     {
         // resource request
-        $page = $this->resource->get->uri('page://self/index')->eager->request();
+        $page = $this->resource->get->uri('page://self/index')->withQuery(['name' => 'koriym'])->eager->request();
         $this->assertSame(200, $page->code);
+        $this->assertSame('Hello koriym', $page['greeting']);
 
         return $page;
     }
 
     /**
-     * @depends resource
+     * @depends testOnGet
      */
-    public function testBody($page)
+    public function testView($page)
     {
-        $this->assertArrayHasKey('greeting', $page->body);
-    }
-
-    /**
-     * Renderable ?
-     *
-     * @depends resource
-     */
-    public function testRenderable($page)
-    {
-        $html = (string)$page;
-        $this->assertInternalType('string', $html);
-    }
-
-    /**
-     * Html Rendered ?
-     *
-     * @depends resource
-     */
-    public function testRenderedHtml($page)
-    {
-        $html = (string)$page;
-        $this->assertContains('</html>', $html);
-    }
-
-    /**
-     * @covers Qck\Manivo\Resource\Page\Index::onGet
-     */
-    public function testOnGet()
-    {
-        $page = $this->resource->get->uri('page://self/index')->withQuery(['name' => 'koriym'])->eager->request();
-        $this->assertSame('Hello koriym', $page['greeting']);
+        $json = json_decode((string) $page);
+        $this->assertNotTrue(json_last_error());
+        $this->assertInstanceOf('stdClass', $json);
+        $this->assertSame('Hello koriym', $json->greeting);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Qck\Manivo\Resource\Page;
 
-use BEAR\Package\Provide\ResourceView\JsonRenderer;
+use BEAR\Resource\JsonRenderer;
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Inject\ResourceInject;
 use Parse\ParseObject;

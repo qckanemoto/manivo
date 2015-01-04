@@ -1,22 +1,22 @@
 <?php
 
-use BEAR\Package\Dev\Dev;
-use Ray\Di\Injector;
+use BEAR\Resource\ResourceInterface;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+use Qck\Manivo;
 use Qck\Manivo\Module\AppModule;
+use Ray\Di\Injector;
 
 error_reporting(E_ALL);
-ini_set('xdebug.max_nesting_level', 300);
 
 // load
 $loader = require dirname(__DIR__) . '/vendor/autoload.php';
 /** @var $loader \Composer\Autoload\ClassLoader */
 $loader->addPsr4('Qck\Manivo\\', __DIR__);
+AnnotationRegistry::registerLoader([$loader, 'loadClass']);
 
 // set the application path into the globals so we can access it in the tests.
-$_ENV['APP_DIR'] = dirname(__DIR__);
-
-// clear cache files
-require $_ENV['APP_DIR'] . '/bin/clear.php';
+$_ENV['TEST_DIR'] = __DIR__;
+$_ENV['TMP_DIR'] = __DIR__ . '/tmp';
 
 // set the resource client
-$GLOBALS['RESOURCE'] = Injector::create([new AppModule('test')])->getInstance('\BEAR\Resource\ResourceInterface');
+$GLOBALS['RESOURCE'] = (new Injector(new AppModule, __DIR__ . '/tmp'))->getInstance(ResourceInterface::class);
