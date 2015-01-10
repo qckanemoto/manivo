@@ -9,16 +9,9 @@ class Index extends ResourceObject
 {
     use ResourceInject;
 
-    /**
-     * @var array
-     */
-    public $body = [
-        'greeting' =>  ''
-    ];
-
-    public function onGet($name = 'BEAR.Sunday')
+    public function onGet()
     {
-        $this['greeting'] = 'Hello ' . $name;
+        $this['request_uri'] = rtrim($_SERVER['REQUEST_URI'], '/');
 
         return $this;
     }
