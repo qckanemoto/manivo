@@ -1,0 +1,12 @@
+{
+    "name": "manivo",
+    "dependencies": {
+        "angular": "~1.2",
+        "angular-route": "~1.2",
+        "angular-animate": "~1.2",
+        "bootstrap": "~3.3",
+        "angular-ui-bootstrap-bower": "~0.12",
+        "font-awesome": "~4.2",
+        "angular-ui-select": "~0.9"
+    }
+}
