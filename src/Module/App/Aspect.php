@@ -1,6 +1,6 @@
 <?php
 
-namespace Qck\Manivo\Module\App;
+namespace Tch\Manivo\Module\App;
 
 use BEAR\Package;
 use Ray\Di\AbstractModule;
@@ -14,8 +14,8 @@ class Aspect extends AbstractModule
     {
         $this->bindInterceptor(
             $this->matcher->any(),
-            $this->matcher->annotatedWith('Qck\Manivo\Annotation\ParseExceptionThrowable'),
-            [$this->requestInjection('Qck\Manivo\Interceptor\ParseExceptionCatcher')]
+            $this->matcher->annotatedWith('Tch\Manivo\Annotation\ParseExceptionThrowable'),
+            [$this->requestInjection('Tch\Manivo\Interceptor\ParseExceptionCatcher')]
         );
     }
 }

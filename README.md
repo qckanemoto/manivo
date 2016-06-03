@@ -13,7 +13,7 @@ Now under developing.
 Push `Deploy to Heroku` button, or:
 
 ```bash
-$ git clone git@github.com:qckanemoto/manivo.git
+$ git clone git@github.com:ttskch/manivo.git
 $ cd manivo
 $ composer install
 $ cp var/conf/parse.php.placeholder var/conf/parse.php

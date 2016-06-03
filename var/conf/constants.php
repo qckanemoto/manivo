@@ -8,8 +8,8 @@
  * ]
  *
  * default constants:
- *  'namespace' => 'Qck\Manivo',
- *  'app_class' => 'Qck\Manivo\App',
+ *  'namespace' => 'Tch\Manivo',
+ *  'app_class' => 'Tch\Manivo\App',
  *  'tmp_dir' => "{$appDir}/var/tmp",
  *  'log_dir' => "{$appDir}/var/log",
  *  'lib_dir' => "{$appDir}/var/lib",

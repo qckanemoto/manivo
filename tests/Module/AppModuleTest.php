@@ -1,6 +1,6 @@
 <?php
 
-namespace Qck\Manivo\Module;
+namespace Tch\Manivo\Module;
 
 use Ray\Di\Injector;
 
@@ -35,7 +35,7 @@ class AppModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testNew()
     {
-        $this->assertInstanceOf('Qck\Manivo\Module\AppModule', $this->module);
+        $this->assertInstanceOf('Tch\Manivo\Module\AppModule', $this->module);
     }
 
     public function testApiContext()
@@ -48,6 +48,6 @@ class AppModuleTest extends \PHPUnit_Framework_TestCase
     public function testBindApp()
     {
         $actual = $this->injector->getInstance('BEAR\Sunday\Extension\Application\AppInterface');
-        $this->assertInstanceOf('Qck\Manivo\App', $actual);
+        $this->assertInstanceOf('Tch\Manivo\App', $actual);
     }
 }

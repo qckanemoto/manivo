@@ -1,5 +1,5 @@
 <?php
-namespace Qck\Manivo\Annotation;
+namespace Tch\Manivo\Annotation;
 
 /**
  * @Annotation

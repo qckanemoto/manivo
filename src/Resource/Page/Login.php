@@ -1,5 +1,5 @@
 <?php
-namespace Qck\Manivo\Resource\Page;
+namespace Tch\Manivo\Resource\Page;
 
 use BEAR\Package\Provide\ResourceView\JsonRenderer;
 use BEAR\Resource\ResourceObject;

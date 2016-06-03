@@ -1,5 +1,5 @@
 {
-    "name": "qckanemoto/manivo",
+    "name": "ttskch/manivo",
     "description":"n/a",
     "license": "proprietary",
     "require": {
@@ -13,7 +13,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Qck\\Manivo\\": "src/"
+            "Tch\\Manivo\\": "src/"
         }
     },
     "extra": {

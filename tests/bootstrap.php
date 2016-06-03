@@ -2,7 +2,7 @@
 
 use BEAR\Package\Dev\Dev;
 use Ray\Di\Injector;
-use Qck\Manivo\Module\AppModule;
+use Tch\Manivo\Module\AppModule;
 
 error_reporting(E_ALL);
 ini_set('xdebug.max_nesting_level', 300);
@@ -10,7 +10,7 @@ ini_set('xdebug.max_nesting_level', 300);
 // load
 $loader = require dirname(__DIR__) . '/vendor/autoload.php';
 /** @var $loader \Composer\Autoload\ClassLoader */
-$loader->addPsr4('Qck\Manivo\\', __DIR__);
+$loader->addPsr4('Tch\Manivo\\', __DIR__);
 
 // set the application path into the globals so we can access it in the tests.
 $_ENV['APP_DIR'] = dirname(__DIR__);

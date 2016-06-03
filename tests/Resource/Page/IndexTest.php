@@ -1,8 +1,8 @@
 <?php
-namespace Qck\Manivo\Resource\Page;
+namespace Tch\Manivo\Resource\Page;
 
 use Ray\Di\Injector;
-use Qck\Manivo\Module\TestModule;
+use Tch\Manivo\Module\TestModule;
 
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -62,7 +62,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Qck\Manivo\Resource\Page\Index::onGet
+     * @covers Tch\Manivo\Resource\Page\Index::onGet
      */
     public function testOnGet()
     {

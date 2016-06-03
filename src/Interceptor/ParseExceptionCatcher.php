@@ -1,5 +1,5 @@
 <?php
-namespace Qck\Manivo\Interceptor;
+namespace Tch\Manivo\Interceptor;
 
 use BEAR\Resource\Code;
 use BEAR\Sunday\Inject\ResourceInject;

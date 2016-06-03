@@ -1,6 +1,6 @@
 <?php
 
-namespace Qck\Manivo;
+namespace Tch\Manivo;
 
 use BEAR\Package\Provide\Application\AbstractApp;
 use Parse\ParseClient;

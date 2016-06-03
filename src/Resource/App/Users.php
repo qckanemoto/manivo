@@ -1,9 +1,9 @@
 <?php
-namespace Qck\Manivo\Resource\App;
+namespace Tch\Manivo\Resource\App;
 
 use BEAR\Resource\ResourceObject;
 use Parse\ParseUser;
-use Qck\Manivo\Annotation\ParseExceptionThrowable;
+use Tch\Manivo\Annotation\ParseExceptionThrowable;
 
 class Users extends ResourceObject
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Qck\Manivo\Module;
+namespace Tch\Manivo\Module;
 
 use BEAR\Package\Module\Package\StandardPackageModule;
 use Ray\Di\AbstractModule;
@@ -31,7 +31,7 @@ class AppModule extends AbstractModule
      */
     protected function configure()
     {
-        $this->install(new StandardPackageModule('Qck\Manivo', $this->context, dirname(dirname(__DIR__))));
+        $this->install(new StandardPackageModule('Tch\Manivo', $this->context, dirname(dirname(__DIR__))));
 
         // override module
         // $this->install(new SmartyModule($this));

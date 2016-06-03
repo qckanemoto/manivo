@@ -1,5 +1,5 @@
 <?php
-namespace Qck\Manivo\Resource\App\Exception;
+namespace Tch\Manivo\Resource\App\Exception;
 
 use BEAR\Resource\ResourceObject;
 

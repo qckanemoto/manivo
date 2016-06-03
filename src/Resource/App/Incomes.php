@@ -1,12 +1,12 @@
 <?php
-namespace Qck\Manivo\Resource\App;
+namespace Tch\Manivo\Resource\App;
 
 use BEAR\Resource\ResourceObject;
 use Parse\ParseACL;
 use Parse\ParseObject;
 use Parse\ParseQuery;
 use Parse\ParseUser;
-use Qck\Manivo\Annotation\ParseExceptionThrowable;
+use Tch\Manivo\Annotation\ParseExceptionThrowable;
 
 class Incomes extends ResourceObject
 {

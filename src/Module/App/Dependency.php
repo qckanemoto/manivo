@@ -1,6 +1,6 @@
 <?php
 
-namespace Qck\Manivo\Module\App;
+namespace Tch\Manivo\Module\App;
 
 use BEAR\Package;
 use Ray\Di\AbstractModule;
@@ -13,6 +13,6 @@ class Dependency extends AbstractModule
      */
     protected function configure()
     {
-         // $this->bind('Qck\Manivo\FooInterface')->to('Qck\Manivo\Foo');
+         // $this->bind('Tch\Manivo\FooInterface')->to('Tch\Manivo\Foo');
     }
 }

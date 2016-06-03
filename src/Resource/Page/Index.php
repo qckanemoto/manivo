@@ -1,6 +1,6 @@
 <?php
 
-namespace Qck\Manivo\Resource\Page;
+namespace Tch\Manivo\Resource\Page;
 
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Inject\ResourceInject;

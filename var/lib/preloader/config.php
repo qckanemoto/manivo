@@ -19,7 +19,7 @@ $config
     ->addExclusiveFilter('/PHPParser_*/')
     ->addExclusiveFilter('/Smarty*/')
     ->addExclusiveFilter('/TokenParser/')
-    ->addExclusiveFilter('/Qck.Manivo\/Resource/')
+    ->addExclusiveFilter('/Tch.Manivo\/Resource/')
     ->addExclusiveFilter('/AdapterTrait/');
 
 return $config;

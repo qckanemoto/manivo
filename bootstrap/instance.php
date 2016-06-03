@@ -6,7 +6,7 @@
  *
  * @global $context string configuration context
  */
-namespace Qck\Manivo;
+namespace Tch\Manivo;
 
 use BEAR\Package\Bootstrap\Bootstrap;
 
